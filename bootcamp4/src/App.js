@@ -20,6 +20,7 @@ class App extends React.Component {
     this.removeBuilding = this.removeBuilding.bind(this);
     this.enableAddBuilding = this.enableAddBuilding.bind(this);
     this.addBuilding = this.addBuilding.bind(this);
+    this.cancelAddBuilding = this.cancelAddBuilding.bind(this);
   }
 
   filterUpdate(value) {
@@ -33,12 +34,14 @@ class App extends React.Component {
     //Here you will need to update the selectedBuilding property of state to the id passed into this function
     var tempState = this.state;
     tempState.selectedBuilding = id;
+    tempState.addBuilding = false;
     this.setState(tempState);
   }
 
   removeBuilding(id) {
     var tempState = this.state;
     tempState.removedBuildings.push(id);
+    tempState.selectedBuilding = 0;
     this.setState(tempState);
   }
 
@@ -52,6 +55,14 @@ class App extends React.Component {
     var tempState = this.state;
     tempState.addedBuildings.push(building);
     tempState.addBuilding = false;
+    tempState.selectedBuilding = building.id;
+    this.setState(tempState);
+  }
+
+  cancelAddBuilding() {
+    var tempState = this.state;
+    tempState.addBuilding = false;
+    tempState.selectedBuilding = 0;
     this.setState(tempState);
   }
 
@@ -67,14 +78,18 @@ class App extends React.Component {
         <main>
           <div className="row">
             <div className="column1">
-              <button onClick={this.enableAddBuilding}>Add Building</button>
+              <button class="btn btn-primary" onClick={this.enableAddBuilding}>Add Building</button>
               <div className="tableWrapper">
                 <table className="table table-striped table-hover">
                   <thead>
                     <tr>
                       <td>
-                        <b>Code Building</b>
+                        <b>Building Code</b>
                       </td>
+                      <td>
+                        <b>Building Name</b>
+                      </td>
+                      <td></td>
                     </tr>
                   </thead>
                   <tbody>
@@ -90,11 +105,11 @@ class App extends React.Component {
                 </table>
               </div>
             </div>
-            {!this.state.addBuilding && <div className="column2">
+            {!this.state.addBuilding && <div className="column2 card">
               <ViewBuilding buildingToView={this.state.selectedBuilding} data={this.props.data} addedBuildings={this.state.addedBuildings} />
             </div>}
-            {this.state.addBuilding && <div className="column2">
-              <AddBuilding currentLength={this.props.data.length + this.state.addedBuildings.length} addBuilding={this.addBuilding}/>
+            {this.state.addBuilding && <div className="column2 card">
+              <AddBuilding currentLength={this.props.data.length + this.state.addedBuildings.length} addBuilding={this.addBuilding} cancelAddBuilding={this.cancelAddBuilding}/>
             </div>}
           </div>
           <Credit />

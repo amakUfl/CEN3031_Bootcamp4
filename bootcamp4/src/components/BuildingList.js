@@ -22,7 +22,7 @@ class BuilingList extends React.Component {
 					<tr key={directory.id}>
 						<td>{directory.code} </td>
 						<td onClick={() => this.selectBuilding(directory.id)}> {directory.name} </td>
-						<td><RemoveBuilding building={directory.id} removeBuilding={this.props.removeBuilding}/></td>
+						<td onClick={() => this.props.removeBuilding(directory.id)}><RemoveBuilding building={directory.id} removeBuilding={this.props.removeBuilding}/></td>
 					</tr>
 				);
 			});

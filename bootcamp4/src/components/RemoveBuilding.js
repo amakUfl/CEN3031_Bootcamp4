@@ -11,7 +11,7 @@ class RemoveBuilding extends React.Component {
 	}
 
 	render() {
-        return (<i onClick={this.removeBuilding}>Remove</i>);
+        return (<i class="fa fa-trash red" onClick={this.removeBuilding}></i>);
 	}
 }
 export default RemoveBuilding;

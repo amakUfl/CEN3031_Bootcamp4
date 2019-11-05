@@ -14,7 +14,7 @@ class Search extends React.Component {
 		//You will need the onChange value for the input tag to capture the textbox value
 		return (
 			<form>
-				<input type="text" placeholder="Type to Filter" onChange={this.filterUpdate}/>
+				<input class="form-control" type="text" placeholder="Type to Filter" onChange={this.filterUpdate}/>
 			</form>
 		);
 	}

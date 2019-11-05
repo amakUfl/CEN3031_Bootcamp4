@@ -1,3 +1,8 @@
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap-reboot.min.css';
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
+
 body {
 	margin: 0;
 	padding: 0;
@@ -73,7 +78,7 @@ td:hover {
 }
 
 .tableWrapper {
-	max-height: 800px;
+	max-height: 500px;
 	overflow: auto;
 	scroll-behavior: smooth;
 }
@@ -99,4 +104,8 @@ button {
 }
 button:hover {
 	background: #ddd;
+}
+
+.red {
+	color: red;
 }

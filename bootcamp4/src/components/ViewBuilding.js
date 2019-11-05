@@ -7,13 +7,15 @@ class ViewBuilding extends React.Component {
 			return buildingToShow.map(building => {
 				return (
 					<div>
-						<p>Code: {building.code}</p>
-						<p>Name: {building.name}</p>
-						{building.address && <p>Address: {building.address}</p>}
+						<p><b>Code:</b> {building.code}</p>
+						<p><b>Name:</b> {building.name}</p>
+						{building.address && <p><b>Address:</b> {building.address}</p>}
 						{building.coordinates && <div>
-							Coordinates: 
-							<p>Latitude: {building.coordinates.latitude}</p>
-							<p>Longitude: {building.coordinates.longitude}</p>
+							<b>Coordinates:</b> 
+							<div class="row">
+								<div class="col-6"><b>Latitude:</b> {building.coordinates.latitude}</div>
+								<div class="col-6"><b>Longitude:</b> {building.coordinates.longitude}</div>
+							</div>
 						</div>}
 					</div>
 				);
